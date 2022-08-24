@@ -22,6 +22,7 @@ export default class Form extends Component {
         <label htmlFor="name-input">
           Nome da carta:
           <input
+            name="cardName"
             type="text"
             data-testid="name-input"
             value={ cardName }
@@ -32,6 +33,7 @@ export default class Form extends Component {
         <label htmlFor="description-input">
           Descrição da Carta:
           <textarea
+            name="cardDescription"
             data-testid="description-input"
             value={ cardDescription }
             onChange={ onInputChange }
@@ -41,6 +43,7 @@ export default class Form extends Component {
         <label htmlFor="attr1-input">
           Atributo 1:
           <input
+            name="cardAttr1"
             type="number"
             data-testid="attr1-input"
             value={ cardAttr1 }
@@ -51,6 +54,7 @@ export default class Form extends Component {
         <label htmlFor="attr2-input">
           Atributo 2:
           <input
+            name="cardAttr2"
             type="number"
             data-testid="attr2-input"
             value={ cardAttr2 }
@@ -61,6 +65,7 @@ export default class Form extends Component {
         <label htmlFor="attr3-input">
           Atributo 3:
           <input
+            name="cardAttr3"
             type="number"
             data-testid="attr3-input"
             value={ cardAttr3 }
@@ -71,6 +76,7 @@ export default class Form extends Component {
         <label htmlFor="image-input">
           Imagem da carta:
           <input
+            name="cardImage"
             type="text"
             data-testid="image-input"
             value={ cardImage }
@@ -80,6 +86,7 @@ export default class Form extends Component {
 
         <label htmlFor="rare-input">
           <select
+            name="cardRare"
             data-testid="rare-input"
             value={ cardRare }
             onChange={ onInputChange }
@@ -93,6 +100,7 @@ export default class Form extends Component {
         <label htmlFor="trunfo-input">
           Super Trunfo:
           <input
+            name="cardTrunfo"
             type="checkbox"
             data-testid="trunfo-input"
             checked={ cardTrunfo }
@@ -122,7 +130,7 @@ Form.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
-  hasTrunfo: PropTypes.bool.isRequired,
+  // hasTrunfo: PropTypes.bool.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
