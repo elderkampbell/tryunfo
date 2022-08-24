@@ -14,7 +14,7 @@ class App extends React.Component {
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
-      hasTrunfo: false,
+      // hasTrunfo: false,
     };
   }
 
@@ -33,7 +33,8 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      isSaveButtonDisabled } = this.state;
+      isSaveButtonDisabled,
+    } = this.state;
 
     return (
       <div>
