@@ -12,8 +12,8 @@ export default class Card extends Component {
       cardRare,
       cardTrunfo } = this.props;
     return (
-      <div data-testid="name-card">
-        <p>
+      <div>
+        <p data-testid="name-card">
           { cardName }
         </p>
 
@@ -38,7 +38,7 @@ export default class Card extends Component {
         <p data-testid="rare-card">
           { cardRare }
         </p>
-        {cardTrunfo === true ? <p data-testid="trunfo-card">Super Trunfo</p> : null}
+        {(cardTrunfo) ? <p data-testid="trunfo-card">Super Trunfo</p> : null}
       </div>
     );
   }

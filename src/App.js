@@ -3,35 +3,39 @@ import Form from './components/Form';
 import Card from './components/Card';
 
 class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      cardName: '',
-      cardDescription: '',
-      cardAttr1: 0,
-      cardAttr2: 0,
-      cardAttr3: 0,
-      cardImage: '',
-      cardRare: '',
-      cardTrunfo: false,
-      // hasTrunfo: false,
-      isSaveButtonDisabled: true,
-      data: [],
-    };
-  }
+  state = {
+    cardName: '',
+    cardDescription: '',
+    cardAttr1: '0',
+    cardAttr2: '0',
+    cardAttr3: '0',
+    cardImage: '',
+    cardRare: '',
+    cardTrunfo: false,
+    hasTrunfo: false,
+    isSaveButtonDisabled: true,
+    data: [],
+  };
 
   onSaveButtonClick = (cardData) => {
+    const { cardTrunfo } = this.state;
     this.setState((prevState) => ({
       data: [...prevState.data, cardData],
       cardName: '',
       cardDescription: '',
-      cardAttr1: 0,
-      cardAttr2: 0,
-      cardAttr3: 0,
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
-    }));
+    }), () => {
+      if (cardTrunfo) {
+        this.setState({ hasTrunfo: true });
+      } else {
+        this.setState({ hasTrunfo: false });
+      }
+    });
   };
 
   isSaveButtonDisabled = () => {
@@ -72,7 +76,9 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      hasTrunfo,
       isSaveButtonDisabled,
+      data,
     } = this.state;
 
     return (
@@ -88,6 +94,7 @@ class App extends React.Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
+          hasTrunfo={ hasTrunfo }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onSaveButtonClick={ this.onSaveButtonClick }
         />
@@ -101,6 +108,21 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
+        {data.map((cards) => (
+          <div key={ cards.cardName }>
+            <Card
+              key={ cards.cardName }
+              cardName={ cards.cardName }
+              cardDescription={ cards.cardDescription }
+              cardAttr1={ cards.cardAttr1 }
+              cardAttr2={ cards.cardAttr2 }
+              cardAttr3={ cards.cardAttr3 }
+              cardImage={ cards.cardImage }
+              cardRare={ cards.cardRare }
+              cardTrunfo={ cards.cardTrunfo }
+            />
+          </div>
+        )) }
       </div>
     );
   }
